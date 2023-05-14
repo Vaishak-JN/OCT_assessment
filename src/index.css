@@ -22,6 +22,8 @@ body{
   background-position: center;
   background-attachment: fixed;
   overflow-x: hidden;
+  width: 100vw;
+
 }
 
 /* nav */
@@ -85,7 +87,7 @@ body{
   width: 100vw;
   height: 100vh;
   background-color: black;
-  opacity: 0.2;
+  opacity: 0.8;
   position: fixed;
   top: 0;
   left: 0;
