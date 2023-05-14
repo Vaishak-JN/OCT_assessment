@@ -12,7 +12,7 @@ const Products = [
         title: "Earphones",
         price: 20,
         compare_price: 25000,
-        offer_start: "15:00:00",
+        offer_start: new Date("May 18, 2023 15:00:00").getTime(),
         soldout: false,
         img: earphones
     },
@@ -21,7 +21,7 @@ const Products = [
         title: "Game Console",
         price: 20,
         compare_price: 50000,
-        offer_start: "48:00:00",
+        offer_start: new Date("May 17, 2023 15:00:00").getTime(),
         soldout: false,
         img: ps
     },
