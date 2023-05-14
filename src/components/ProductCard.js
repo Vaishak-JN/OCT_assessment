@@ -3,28 +3,11 @@ import soldout from "../assets/soldout.png"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AppContext from "../store/app-context";
+import CountDown from "./CountDown";
 
 const ProductCard = ({ product }) => {
 
     const { auth, showModalHandler } = useContext(AppContext)
-
-
-    const now = new Date().getTime()
-
-    const [time, setTime] = useState()
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            let dist = product.offer_start - now
-
-            let hours = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((dist % (1000 * 60)) / 1000);
-
-            setTime(hours + ":" + minutes + ":" + seconds)
-        }, 1000)
-    }, [time])
-
 
     const handleBuy = () => {
 
@@ -33,7 +16,6 @@ const ProductCard = ({ product }) => {
         } else {
             toast(`${product.title} ordered`);
         }
-
 
     }
 
@@ -49,7 +31,8 @@ const ProductCard = ({ product }) => {
                 <h3 className="product-title">{product.title}</h3>
                 <p className="product-price">{product.price}</p>
                 <p className="product-compare-price">{product.compare_price}</p>
-                {!product.soldout && <p className="offer-start">Offers starts in <span>{time}</span> <button className="buy-now" onClick={handleBuy}>Buy Now</button></p>}
+                {!product.soldout && <p className="offer-start"><CountDown timer={product.offer_start} /> <button className="buy-now" onClick={handleBuy}>Buy Now</button></p>}
+
 
             </div>
             <ToastContainer />

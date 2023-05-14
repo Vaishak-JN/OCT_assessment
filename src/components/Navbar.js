@@ -13,11 +13,7 @@ const Navbar = () => {
 
     const [showSideBar, setShowSideBar] = useState(false)
 
-    // if (showModal) {
-    //     setShowSideBar(false)
-    // }
 
-    // console.log(showSideBar)
 
     let classNames = showSideBar ? "show-sidebar" : "hide-sidebar"
 
@@ -28,13 +24,16 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <button onClick={() => setShowSideBar(!showSideBar)} ><img src={icon} alt="icon" /></button>
-            {showSideBar && createPortal(
-                <>
-                    <Overlay onClick={() => setShowSideBar(!showSideBar)} />
-                    <SideBar handleShowSideBar={showSideBarHnadler} classes={classNames} />
-                </>,
-                document.getElementById("side")
-            )}
+            {
+                // showSideBar && 
+                createPortal(
+                    <>
+                        {showSideBar && <Overlay onClick={() => setShowSideBar(!showSideBar)} />}
+                        <SideBar handleShowSideBar={showSideBarHnadler} classes={classNames} />
+                    </>,
+                    document.getElementById("side")
+                )
+            }
 
             {
                 showModal &&

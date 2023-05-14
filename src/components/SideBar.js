@@ -11,7 +11,7 @@ const SideBar = ({ classes, blur, handleShowSideBar }) => {
     const { auth } = useContext(AppContext)
 
     return (
-        <div onBlur={blur} className={`sidebar ${classes}}`} >
+        <div onBlur={blur} className={`sidebar ${classes}`} >
             <div>
                 {auth ?
                     <>

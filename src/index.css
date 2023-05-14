@@ -11,6 +11,7 @@
   padding:0px;
   margin: 0px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 body{
@@ -21,7 +22,7 @@ body{
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  overflow-x: hidden;
+  overflow: hidden;
   width: 100vw;
 
 }
@@ -55,21 +56,22 @@ body{
 .sidebar{
   
   z-index: 999;
-  height: 100vh;
+  height: 100%;
   background-color: var(--blue);
   color: white;
   position: fixed;
   top: 0;
-  right: 0;
+  right: -100%;
   width: 280px;
-  transition: all 1s linear;
+  transition: all 0.3s linear;
 }
 .sidebar.show-sidebar{
-  transform: translateX(-250px) !important;
-  
+  /* transform: translateX(-250px) !important; */
+  right: 0%;
 }
 .sidebar.hide-sidebar{
-  transform: translateX(250px) !important;
+  /* transform: translateX(250px) !important; */
+  right:-100%;
 }
 .sidebar > div{
   padding: 10px;
@@ -84,8 +86,9 @@ body{
 }
 
 .overlay{
+  transition: all 0.5s linear;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background-color: black;
   opacity: 0.8;
   position: fixed;
@@ -150,6 +153,7 @@ body{
 .slick-dots li button::before{
   font-size:15px;
   color:#003B87;
+  
 }
 .slick-dots li.slick-active button::before{
   color: #003B87;
@@ -160,9 +164,9 @@ body{
 .product-section{
   /* width: 100vw; */
   padding:30px 10px;
-  margin-bottom:20px;
+  /* margin-bottom:20px; */
   background-image: url("./assets/Cookie-bg.png");
-  background-size:cover;
+  background-size:contain;
   background-position:center;
   background-repeat: no-repeat;
   /* font-family: 'PT Sans', sans-serif; */
@@ -334,7 +338,8 @@ button:disabled{
   align-items: center;
   overflow:hidden;
   /* padding: 0 10px; */
-  z-index: 999
+  z-index: 999;
+  margin-top: 0px;
 }
 .footer>div{
   /* border: 1px solid red; */
@@ -387,5 +392,10 @@ animation: scrolling-text 15s linear infinite;
       width: 100vw;
       height: 600px;
       object-fit: contain;
+    }
+
+    .product-section {
+      background-size: cover;
+      
     }
 }
